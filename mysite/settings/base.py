@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'blog',
     'flex',
     'streams',
+    'storages',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
