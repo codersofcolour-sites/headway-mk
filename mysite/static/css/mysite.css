@@ -1,3 +1,44 @@
+
 body{
-    background: #FFFFFF;
+    background-color: #FFFFFF;
+
+}
+
+h1{
+    color: #0A193C;
+    text-align: center;
+	font-size: 45px;
+	letter-spacing: 1.5px;
+}
+
+h2{
+    color: #5469F2
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 1.5px;
+}
+
+h3{ 
+    letter-spacing: 1.5px;
+    font-size: 30px;
+}
+
+  
+h4{ 
+    letter-spacing: 1.5px;
+    font-size: 25px;
+
+}
+
+
+li {
+	font-family: "Arial", sans-serif;
+}
+
+
+
+p{  
+    letter-spacing: 1.5px;
+    font-family:"Arial",  sans-serif; 
+    font: size 20;
 }
