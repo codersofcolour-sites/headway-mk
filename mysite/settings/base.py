@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.contrib.modeladmin',  # Don't repeat if it's there already
-    'wagtailmenus',
     'modelcluster',
     'taggit',
     'django.contrib.admin',
@@ -89,7 +88,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
-                'wagtailmenus.context_processors.wagtailmenus',
+                #'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },
@@ -161,7 +160,6 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-ADMIN_TOOLS_MENU = 'menus_tags.Menus'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 

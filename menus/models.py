@@ -12,6 +12,7 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.core.models import Orderable
 from wagtail.snippets.models import register_snippet
+#from wagtailmenus.conf import settings
 
 
 class MenuItem(Orderable):
