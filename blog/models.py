@@ -20,7 +20,18 @@ class BlogIndexPage(Page):
         context['blogpages'] = live_blogpages.order_by('-first_published_at')
         return context
     
-
+class BlogIndexPage(Page):
+    intro = RichTextField(blank=True)
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full")
+    ]
+    def get_context(self, request):
+        # Update context to include only published posts,
+        # in reverse chronological order
+        context = super(BlogIndexPage, self).get_context(request)
+        live_blogpages = self.get_children().live()
+        context['blogpages'] = live_blogpages.order_by('-first_published_at')
+        return context
 class BlogPage(Page):
     date = models.DateField("Post date")
     image = models.ForeignKey(
