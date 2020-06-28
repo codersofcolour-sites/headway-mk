@@ -29,6 +29,15 @@ class BlogPage(Page):
         blank=True,
         on_delete=models.SET_NULL
     )
+    banner_title = models.CharField(max_length = 100, blank = False, null = True)
+    banner_subtitle = RichTextField(features = ["bold", "italic"], null = True, blank=True)
+    banner_image = models.ForeignKey(
+        "wagtailimages.Image", 
+        null = True,
+        blank = False,
+        on_delete =models.SET_NULL,
+        related_name = "+",
+    )
     intro = models.CharField(max_length=250)
     body = RichTextField(blank=True)
     

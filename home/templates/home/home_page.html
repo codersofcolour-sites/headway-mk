@@ -15,6 +15,12 @@
         {% endif %}
   </div>
   
+  {% for block in page.content %}
+  {% include_block block %}
+{% endfor %}
+  
+  
+  
   {# Example of an Orderable from home/models.py #}
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -39,9 +45,7 @@
   
   
   
-  {% for block in page.content %}
-        {% include_block block %}
-    {% endfor %}
+
 
 
 
