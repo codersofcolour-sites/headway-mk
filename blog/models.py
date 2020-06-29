@@ -50,14 +50,23 @@ class BlogPage(Page):
     body = RichTextField(blank=True)
     
     content_panels = Page.content_panels + [
+
+        MultiFieldPanel(
+            [
+                FieldPanel("banner_title"),
+                FieldPanel("banner_subtitle"),
+                ImageChooserPanel("banner_image"),
+            ],
+            heading="Banner Options",
+        ),
         FieldPanel('date'),
         ImageChooserPanel('image'),
         FieldPanel('intro'),
         FieldPanel('body', classname="full"),
+    
     ]
     def get_context(self, request, *args, **kwargs):
         context = super(BlogPage, self).get_context(request, *args, **kwargs)
-        context['posts'] = self.posts
         context['blog_page'] = self
 
         context['menuitems'] = self.get_children().filter(

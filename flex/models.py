@@ -37,25 +37,10 @@ class FlexPage(Page):
         on_delete =models.SET_NULL,
         related_name = "+",
     )
-    content = StreamField([("cta", blocks.CTABlock())], null=True, blank=True)
+    
+    
 
-    content_panels = Page.content_panels + [
-        MultiFieldPanel(
-            [
-                FieldPanel("banner_title"),
-                FieldPanel("banner_subtitle"),
-                ImageChooserPanel("banner_image"),
-                PageChooserPanel("banner_cta"),
-            ],
-            heading="Banner Options",
-        ),
-        MultiFieldPanel(
-            [InlinePanel("carousel_images", max_num=10, min_num=0, label="Image")],
-            heading="Carousel Images",
-        ),
-        StreamFieldPanel("content"),
-
-    ]
+    
     content = StreamField(
         [ 
             ("title_and_text", blocks.TitleAndTextBlock()),
@@ -65,12 +50,23 @@ class FlexPage(Page):
             ("cta", blocks.CTABlock()),
         ],
         null = True, 
-        blank =True, 
-        
+        blank =True,    
     )
 
     subtitle = models.CharField(max_length =100, null=True, blank=True)
-
+    content_panels = Page.content_panels + [
+        FieldPanel("subtitle"),
+        MultiFieldPanel(
+            [
+                FieldPanel("banner_title"),
+                FieldPanel("banner_subtitle"),
+                ImageChooserPanel("banner_image"),
+                PageChooserPanel("banner_cta"),
+            ],
+            heading="Banner Options",
+        ),
+        StreamFieldPanel("content"),
+    ]
 
     class Meta:  #noqa
         verbose_name = "Flex Page"
