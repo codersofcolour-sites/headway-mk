@@ -25,7 +25,7 @@ class HomePageCarouselImages(Orderable):
     carousel_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
-        blank=True,
+        blank=False,
         on_delete=models.SET_NULL,
         related_name="+",
     )
@@ -39,11 +39,11 @@ class HomePage(Page):
     templates = "home/hompage_page.html"
  
     banner_title = models.CharField(max_length = 100, blank = False, null = True)
-    banner_subtitle = RichTextField(features = ["bold", "italic"], null = True, blank=True)
+    banner_subtitle = RichTextField(features = ["bold", "italic"], null = True, blank=False)
     banner_image = models.ForeignKey(
         "wagtailimages.Image", 
         null = True,
-        blank = True,
+        blank = False,
         on_delete =models.SET_NULL,
         related_name = "+",
     )
