@@ -14,13 +14,12 @@
       </div>
 
         
-  
-  {% for block in page.content %}
-  {% include_block block %}
-{% endfor %}
-  
-  
-  
+    <div class="container mb-sm-5 mt-sm-5">
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
+    </div>
+
   {# Example of an Orderable from home/models.py #}
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
