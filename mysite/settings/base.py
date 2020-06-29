@@ -164,6 +164,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# Make embed blocks responsive
+WAGTAILEMBEDS_RESPONSIVE_HTML = True
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "mysite"

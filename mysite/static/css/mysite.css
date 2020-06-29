@@ -49,3 +49,20 @@ p{
     font-family:"Arial",  sans-serif; 
     font: size 20;
 }
+
+/* CSS from wagtail docs to make embed div responsive
+https://docs.wagtail.io/en/stable/topics/writing_templates.html#responsive-embeds */
+
+.responsive-object {
+    position: relative;
+}
+
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
