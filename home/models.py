@@ -13,6 +13,7 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField
+from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from streams import blocks
@@ -80,6 +81,7 @@ class HomePage(Page):
             ("simple_richtext", blocks.SimpleRichtextBlock()),
             ("cards", blocks.CardBlock()),
             ("cta", blocks.CTABlock()),
+            ("embed", EmbedBlock()),
         ],
         null = True, 
         blank =True, 
