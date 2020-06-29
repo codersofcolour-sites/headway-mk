@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">{{self.banner_title }}</h1>
-      <p class="lead">{{ self.banner_subtitle|richtext }}</p>
-    </div>
-  </div>
-
-  </div>
     
 {% block content %}
-    <div>
-        {{self.subtitle}}
-    </div>
 
+<div class="jumbotron jumbotron-fluid" style="background-color:lightskyblue;">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12 text-center">
+              <h1 class="display-4"> {{ self.title }}</h1>
+              <div class="lead">{{ self.subtitle }}</div>
+          </div>
+      </div>
+  </div>
+</div>
+    
     {% for block in page.content %}
         {% include_block block %}
     {% endfor %}

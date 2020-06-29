@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
-    <div class="jumbotron" style="background-image: url('{{ img.url }}'); background-size: cover ; background-position: center center  ; color: #fff !important"></div>>
-        <h1 class="display-4">{{self.banner_title }}</h1>
-        <div class="lead">{{ self.banner_subtitle|richtext }}</div>
-
-{% if self.banner_cta %}
-    <a class="btn btn-primary btn-lg" href="#" role="button">@todo</a>
-{% endif %}
-</div>  
+ 
 {% block content %}
-
+<div class="jumbotron jumbotron-fluid" style="background-color:lightskyblue;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 class="display-4"> {{ self.title }}</h1>
+                <div class="lead">{{ self.subtitle }}</div>
+            </div>
+        </div>
+    </div>
+  </div>
     <h1>{{ page.title }}</h1>
     <div class="intro">{{ page.intro|richtext }}</div>
     {% for post in page.get_children %}

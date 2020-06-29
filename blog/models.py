@@ -2,11 +2,20 @@ from django.db import models
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import (
+    FieldPanel,
+    MultiFieldPanel,
+    InlinePanel,
+    StreamFieldPanel,
+    PageChooserPanel,
+)
 from wagtail.images.edit_handlers import ImageChooserPanel
+from modelcluster.fields import ParentalKey
 
     
 class BlogIndexPage(Page):
+    template = "blog/blog_index_page.html" 
+
     intro = RichTextField(blank=True)
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname="full")
@@ -19,6 +28,8 @@ class BlogIndexPage(Page):
         context['blogpages'] = live_blogpages.order_by('-first_published_at')
         return context
 class BlogPage(Page):
+    template = "blog/blog_page.html" 
+
     date = models.DateField("Post date")
     image = models.ForeignKey(
         'wagtailimages.Image',
