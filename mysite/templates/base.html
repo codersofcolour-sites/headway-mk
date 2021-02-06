@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="{% static 'css/style.css'%}">
         <link rel="stylesheet" href="{% static 'css/responsive.css'%}">
         <script src="{% static 'js/vendor/modernizr-2.8.3.min.js'%}"></script>
+        {% block extra_css %}{% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">

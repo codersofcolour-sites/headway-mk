@@ -6,7 +6,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.models import Orderable
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-
+from wagtail.core.fields import  RichTextField
 class SiteTabLinkButtons(Orderable):
     page = ParentalKey('settings.BaseSettings', related_name="tab_buttons")
     button_text= models.CharField(

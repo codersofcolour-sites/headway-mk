@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'wagtail.core',
     'wagtail_events',
     'modelcluster',
+
+    'wagtail_color_panel',
     'taggit',
     'django.contrib.admin',
     'django.contrib.auth',

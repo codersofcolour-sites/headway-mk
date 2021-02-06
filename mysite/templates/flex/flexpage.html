@@ -3,19 +3,41 @@
 
     
 {% block content %}
-
-<div class="jumbotron jumbotron-fluid" style="background-color:lightskyblue;">
-  <div class="container">
-      <div class="row">
-          <div class="col-sm-12 text-center">
-              <h1 class="display-4"> {{ self.title }}</h1>
-              <div class="lead">{{ self.banner_subtitle }}</div>
-          </div>
-      </div>
-  </div>
+{% image page.banner_image fill-1920x320 as img%}
+<div class="breadcrumb-banner-area ptb-120 bg-opacity">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-text text-center">
+                <h2>{{page.title}}</h2>
+                    <ul class="breadcrumb-menu">
+                    {% for ancestor in page.get_ancestors %}
+                    {% if ancestor.url %}
+                        <li><a href="{{ancestor.url}}">{{ancestor.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                        <li><a href="{{page.url}}">{{page.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
     
     {% for block in page.content %}
         {% include_block block %}
     {% endfor %}
+{% endblock %}
+
+{% block extra_css %}
+{% image page.banner_image fill-1920x320 as img%}
+<style>
+.breadcrumb-banner-area{
+    background-image:url({{img.url}})
+}
+.bg-opacity::before {
+    background: {% if page.banner_overlay %}{{page.banner_overlay}} {% else %} #003366{% endif %}  none repeat scroll 0 0;
+
+</style>
+
 {% endblock %}
