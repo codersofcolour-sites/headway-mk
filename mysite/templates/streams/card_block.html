@@ -3,8 +3,8 @@
 <div class="our-service-area pt-120 pb-90">
     <div class="container">
         <div class="section-title mb-60 text-center" >
-            <h4>{{ self.subtitle }}</h4>
-            <h2>{{ self.title }}</h2>
+            {% if self.subtitle %}<h4>{{ self.subtitle }}</h4>{% endif %}
+            {% if self.title %}<h2>{{ self.title }}</h2>{% endif %}
         </div>
         <div class="row">
             {% for card in self.cards %}

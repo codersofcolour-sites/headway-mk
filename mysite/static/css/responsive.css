@@ -9,7 +9,7 @@
 /* large desktop :1366px. */
 @media (min-width: 1200px) and (max-width: 1500px) {
 .slider-wrapper {
-  padding: 100px 0;
+  padding: 200px 0;
 }
 .home-area-right {
   padding: 112px 0 92px 20px;
@@ -108,7 +108,7 @@
   display: none;
 }
 .slider-wrapper {
-  padding: 100px 0;
+  padding: 150px 0;
 }
 
 .home-area-right {
@@ -214,7 +214,7 @@
   width: 50px;
 }
 .slider-wrapper {
-  padding: 150px 0;
+  padding: 140px 0;
 }
 
 .contact-left-wrapper {
