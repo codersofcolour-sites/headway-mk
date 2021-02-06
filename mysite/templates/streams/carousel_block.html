@@ -1,0 +1,29 @@
+{% load wagtailimages_tags %}
+
+<div class="slider-area">
+    <div class="slider-active owl-carousel">
+        {% for carousel_item in self %}
+        {% image carousel_item.value.image fill-1920x780 as img %}
+        <div class="slider-wrapper ptb-250" style="background-image:url({{img.url}})">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-lg-6 pr-0">
+                        <div class="slider-text">
+                            <h2>{{carousel_item.value.header}}</h2>
+                            <div class="slider-info">
+                                <p>{{carousel_item.value.text}}</p>
+                            </div>
+                            {% if carousel_item.value.button_page %}
+                                <a href="{{carousel_item.value.button_page}}">learn more</a>
+                            {% elif carousel_item.value.button_url %}
+                                <a href="{{carousel_item.value.button_url}}">learn more</a>      
+                            {% endif %}                            
+                            
+                        </div>	
+                    </div>
+                </div>						
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

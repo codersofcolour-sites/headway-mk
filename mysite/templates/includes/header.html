@@ -1,0 +1,97 @@
+{% load menus_tags wagtailimages_tags  %}
+
+{% get_menu "main-menu" as menu %} 
+{% with settings.settings.BaseSettings as setting %}
+
+<header>
+    <div class="header-top-area blue-bg">
+    <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="headers-left">
+                        {% if setting.tel %}
+                        <div class="headers-left-text">
+                            <div class="headers-left-icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="headers-left-text">
+                                <p>{{setting.tel}}</p>
+                            </div>
+                        </div>
+                         {% endif %}
+                         {% if setting.short_address %}
+                        <div class="headers-left-text">
+                            <div class="headers-left-icon">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="headers-left-text">
+                                <p>{{setting.short_address}}</p>
+                            </div>
+                        </div>                         
+                         {% endif %}
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6  col-xs-12">
+                    {% for btn in setting.tab_buttons.all %}
+                    <div class="header-rights">
+                        <a href="{{btn.button_url}}" target='_blank'>{{btn.button_text}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main-menu-area-start -->
+    <div id="header-sticky" class="main-menu-area menu-style-1 white-header">
+        <div class="container md-container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="logo">
+                    
+                        <a href="/">{% image setting.logo max-340x85 %}</a>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                               {% for item in menu.menu_items.all %}
+                                <li {% if request.get_full_path == item.link%}class="active"{% endif %}>
+                                    <a href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>							
+                </div>
+                <div class="col-xs-12"><div class="mobile-menu"></div></div>				
+            </div>
+        </div>
+    </div>
+</header>
+{% endwith %}
+{% comment %}        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Headway MK</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarColor03">
+              
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                
+                </li>
+                
+                {% for item in menu.menu_items.all %}
+                <li>
+                    <a href="{{ item.link }}" class="nav-link"{% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
+                </li>
+            {% endfor %}
+                
+                
+              </ul>
+               
+            </div>
+        </nav>{% endcomment %}

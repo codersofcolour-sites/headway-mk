@@ -2,6 +2,21 @@
 
 from wagtail.core import blocks 
 from wagtail.images.blocks import ImageChooserBlock
+from django.core.exceptions import ValidationError
+
+class CarouselBlock(blocks.StreamBlock):
+    carousel_item = blocks.StructBlock([
+                ("image", ImageChooserBlock(required=True)),
+                ("header", blocks.CharBlock(required=False, max_length=40)),
+                ("text", blocks.TextBlock(required=False, max_length=200, help_text = 'Add additional text')),
+                ("button_page", blocks.PageChooserBlock(required=False)),
+                ("button_url", blocks.URLBlock(required=False, help_text="If the button page above is selected, that will be used first.")),
+            ], icon='image')
+
+    class Meta:
+        template = "streams/carousel_block.html"
+        label = "Carousel Image"
+
 
 
 class TitleAndTextBlock(blocks.StructBlock):
@@ -18,15 +33,14 @@ class TitleAndTextBlock(blocks.StructBlock):
 class RichtextBlock(blocks.RichTextBlock):
     """Richtext with all the features."""
 
-    class Meta:  # noqa
+    class Meta: 
         template = "streams/richtext_block.html"
         icon = "doc-full"
         label = "Full RichText"
 
 class CardBlock(blocks.StructBlock):
-    """Cards with image and text and button(s)."""
-
-    title = blocks.CharBlock(required=True, help_text="Add your title")
+    subtitle = blocks.CharBlock(required=False, max_length=50, help_text="Add your subtitle")
+    title = blocks.CharBlock(required=False, max_length=50, help_text="Add your title")
 
     cards = blocks.ListBlock(
         blocks.StructBlock(
@@ -36,13 +50,13 @@ class CardBlock(blocks.StructBlock):
                 ("text", blocks.TextBlock(required=True, max_length=200)),
                 ("button_page", blocks.PageChooserBlock(required=False)),
                 ("button_url", blocks.URLBlock(required=False, help_text="If the button page above is selected, that will be used first.")),
-            ]
+            ], icon='list-ul'
         )
     )
 
-    class Meta:  # noqa
+    class Meta:
         template = "streams/card_block.html"
-        icon = "placeholder"
+        icon = "form"
         label = "Cards"
 
 

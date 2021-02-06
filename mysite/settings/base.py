@@ -32,6 +32,9 @@ INSTALLED_APPS = [
     'flex',
     'menus',
     'contact',
+    'settings',
+    'dashboard',
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -43,7 +46,6 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
-    'wagtail.contrib.modeladmin', 
     'wagtail_events',
     'modelcluster',
     'taggit',
@@ -53,6 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'wagtail.contrib.modeladmin', 
+    'wagtail.contrib.settings',
 ]
 
 MIDDLEWARE = [

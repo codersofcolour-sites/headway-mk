@@ -18,28 +18,15 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from streams import blocks
 
 
-class HomePageCarouselImages(Orderable):
-    """Between 1 and 5 images for the home page carousel."""
-
-    page = ParentalKey("home.HomePage", related_name="carousel_images")
-    carousel_image = models.ForeignKey(
-        "wagtailimages.Image",
-        null=True,
-        blank=False,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
-    panels = [ImageChooserPanel("carousel_image")]
-
-
     
 class HomePage(Page):
    
     templates = "home/hompage_page.html"
- 
-    banner_title = models.CharField(max_length = 100, blank = False, null = True)
-    banner_subtitle = RichTextField(features = ["bold", "italic"], null = True, blank=False)
+
+
+    carousel_images = StreamField(blocks.CarouselBlock(max_num=3), blank=True, null=True)
+    banner_title = models.CharField(max_length = 100, blank=False, null=True)
+    banner_subtitle = RichTextField(features = ["bold", "italic"], null=True, blank=False)
     banner_image = models.ForeignKey(
         "wagtailimages.Image", 
         null = True,
@@ -54,7 +41,18 @@ class HomePage(Page):
         on_delete =models.SET_NULL,
         related_name = "+",
     )
-    content = StreamField([("cta", blocks.CTABlock())], null=True, blank=True)
+
+    content = StreamField(
+        [   
+            ("title_and_text", blocks.TitleAndTextBlock()),
+            ("full_richtext", blocks.RichtextBlock()),
+            ("simple_richtext", blocks.SimpleRichtextBlock()),
+            ("cards", blocks.CardBlock()),
+            ("cta", blocks.CTABlock()),
+        ],
+        null = True, 
+        blank =True, 
+    )
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -66,25 +64,10 @@ class HomePage(Page):
             ],
             heading="Banner Options",
         ),
-        MultiFieldPanel(
-            [InlinePanel("carousel_images", max_num=10, min_num=0, label="Image")],
-            heading="Carousel Images",
-        ),
+        StreamFieldPanel("carousel_images"),
         StreamFieldPanel("content"),
 
     ]
-    content = StreamField(
-        [ 
-            ("title_and_text", blocks.TitleAndTextBlock()),
-            ("full_richtext", blocks.RichtextBlock()),
-            ("simple_richtext", blocks.SimpleRichtextBlock()),
-            ("cards", blocks.CardBlock()),
-            ("cta", blocks.CTABlock()),
-        ],
-        null = True, 
-        blank =True, 
-        
-    )
 
     
     class Meta:

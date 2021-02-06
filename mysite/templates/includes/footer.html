@@ -1,0 +1,66 @@
+{% with settings.settings.BaseSettings as setting %}
+<footer>
+    <div class="footer-top-area blue-bg-1 pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                {% comment %} <div class="col-md-4 col-sm-6">
+                    <div class="footer-wrapper mb-30">
+                        <h2 class="footer-section">SUPPORT</h2>
+                        <ul class="footer-menu">
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Forums</a></li>
+                            <li><a href="#">Language Packs</a></li>
+                            <li><a href="#">Release Status</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 hidden-sm">
+                    <div class="footer-wrapper mb-30">
+                        <h2 class="footer-section">link</h2>
+                        <ul class="footer-menu">
+                            <li><a href="#">Our Company</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Recent Work</a></li>
+                            <li><a href="#">Latest News</a></li>
+                        </ul>
+                    </div>
+                </div> {% endcomment %}
+                <div class="col-md-5 col-sm-6">
+                    <div class="footer-wrapper mb-30">
+                        <h2 class="footer-section">address</h2>
+                        <ul class="footer-link">
+                            {% if setting.address %}<li><i class="fa fa-home"></i>{{setting.address}}</li>{% endif %}
+                            {% if setting.tel %}<li><i class="fa fa-phone"></i>{{setting.tel}}</li>{% endif %}
+                            {% if setting.email %}<li><i class="fa fa-envelope-open"></i>{{setting.email}}</li>{% endif %}
+                            {% if setting.hours %}<li><i class="fa fa-clock-o"></i>{{setting.hours}}</li>{% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-top-area-end -->
+    <!-- footer-bottom-area-start -->
+    <div class="footer-bottom-area blue-bg ptb-20">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6">
+                    <div class="copyright">
+                        <p>Copyright © 2020 Headway Milton Keynes, All Right Reserved. Made by <a href="https://github.com/amajai" target='_blank'>amajai</a></p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="footer-icon">
+                        {% if setting.facebook %}<a href="{{setting.facebook }}" target='_blank'><i class="fa fa-facebook"></i></a>{% endif %}
+                        {% if setting.instagram %}<a href="{{setting.instagram }}" target='_blank'><i class="fa fa-instagram"></i></a>{% endif %}
+                        {% if setting.twitter %}<a href="{{setting.twitter }}" target='_blank'><i class="fa fa-twitter"></i></a>{% endif %}
+                        {% if setting.pinterest %}<a href="{{setting.pinterest }}" target='_blank'><i class="fa fa-pinterest"></i></a>{% endif %}
+                        {% if setting.youtube %}<a href="{{setting.youtube }}" target='_blank'><i class="fa fa-youtube"></i></a>{% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-bottom-area-end -->
+</footer>
+{% endwith %}
