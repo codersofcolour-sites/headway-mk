@@ -52,6 +52,7 @@ traitlets==4.3.3
 Unidecode==1.1.1
 urllib3==1.25.9
 wagtail==2.9
+wagtail-color-panel==1.2.0
 wagtail-events==0.4.0
 wagtailgmaps==1.0.1
 wagtailmenus==3.0.2
