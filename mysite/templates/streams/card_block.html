@@ -9,7 +9,7 @@
         <div class="row">
             {% for card in self.cards %}
             {% image card.image fill-400x400 as img %}
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="service-wrapper mb-30">
                     <div class="service-img">
                         <img src="{{ img.url }}" alt="{{ img.alt }}" />

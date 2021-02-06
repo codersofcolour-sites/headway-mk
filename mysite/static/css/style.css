@@ -525,7 +525,7 @@
   padding: 0 30px;
   position: relative;
   color: #abc3dd;
-  
+  height: 100%;
 }
 .service-text h2 {
   font-size: 23px;

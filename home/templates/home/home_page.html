@@ -4,16 +4,10 @@
 
     
 {% block content %}
-    {% image self.banner_image width-1500 as img %}
+  {% include_block page.carousel_images %}
+  {% for block in page.content %}
+  {% include_block block %}
+  {% endfor %}
 
-    <div class="jumbotron jumbotron-fluid"style="background-image: url('{{img.url}}'; background-position:center; height:100vh !important">
-        <div class="container">
-          <h1 class="display-4">{{self.banner_title }}</h1>
-          <p class="lead">{{ self.banner_subtitle|richtext }}</p>
-        </div>
-      </div>
-
-        
-    {% include_block page.carousel_images %}
 {% endblock %}
 

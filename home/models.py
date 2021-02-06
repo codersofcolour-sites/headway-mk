@@ -23,24 +23,7 @@ class HomePage(Page):
    
     templates = "home/hompage_page.html"
 
-
-    carousel_images = StreamField(blocks.CarouselBlock(max_num=3), blank=True, null=True)
-    banner_title = models.CharField(max_length = 100, blank=False, null=True)
-    banner_subtitle = RichTextField(features = ["bold", "italic"], null=True, blank=False)
-    banner_image = models.ForeignKey(
-        "wagtailimages.Image", 
-        null = True,
-        blank = False,
-        on_delete =models.SET_NULL,
-        related_name = "+",
-    )
-    banner_cta = models.ForeignKey(
-        "wagtailcore.Page",  
-        null = True,
-        blank = True,
-        on_delete =models.SET_NULL,
-        related_name = "+",
-    )
+    carousel_images = StreamField(blocks.CarouselBlock(max_num=3, required=False), blank=True, null=True)
 
     content = StreamField(
         [   
@@ -55,20 +38,10 @@ class HomePage(Page):
     )
 
     content_panels = Page.content_panels + [
-        MultiFieldPanel(
-            [
-                FieldPanel("banner_title"),
-                FieldPanel("banner_subtitle"),
-                ImageChooserPanel("banner_image"),
-                PageChooserPanel("banner_cta"),
-            ],
-            heading="Banner Options",
-        ),
         StreamFieldPanel("carousel_images"),
         StreamFieldPanel("content"),
 
     ]
-
     
     class Meta:
         verbose_name = "Home Page"
