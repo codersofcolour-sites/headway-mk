@@ -1352,6 +1352,7 @@
   margin-top: 12px;
   padding: 17px 35px;
   text-transform: uppercase;
+  font-weight:800;
   transition:.3s;
 }
 .action-text a:hover{background:#003366;color:#fff;}

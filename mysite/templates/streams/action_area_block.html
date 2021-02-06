@@ -1,0 +1,33 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="action-area bg-opacity ptb-110">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="action-wrapper">
+                    <div class="action-text">
+                        <h2>{{self.text}}</h2>
+                        {% if self.button_page %}
+                        <a href="{{self.button_page.url}}">{{self.button_text}}</a>
+                        {% elif self.button_url %} 
+                        <a href="{{self.button_url}}">{{self.button_text}}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_css %}
+
+<style>
+{% image self.image fill-1920x443 as img%}
+.action-area{
+    background-image:url({{img.url}})
+}
+.bg-opacity::before {
+    background: {% if page.banner_overlay %}{{page.banner_overlay}} {% else %} #003366{% endif %}  none repeat scroll 0 0;
+
+</style>
+
+{% endblock %}
