@@ -42,7 +42,6 @@ class FlexPage(Page):
             ('image', blocks.ImageBlock()),
             ("jumbotron", blocks.ActionAreaBlock()),
             ("title_and_text", blocks.TitleAndTextBlock()),
-            ("full_richtext", blocks.RichtextBlock()),
             ("simple_richtext", blocks.SimpleRichtextBlock()),
             ("cards", blocks.CardBlock()),
         ],

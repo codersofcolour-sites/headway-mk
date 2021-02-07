@@ -3,7 +3,6 @@
 from wagtail.core import blocks
 from wagtail.core.blocks.struct_block import StructBlock 
 from wagtail.images.blocks import ImageChooserBlock
-from blog.models import BlogPage
 
 
 class CarouselBlock(blocks.StreamBlock):
@@ -39,18 +38,6 @@ class ActionAreaBlock(blocks.StructBlock):
         icon = "doc-full-inverse"
         label = "Jumbotron - Text & Button"
 
-class LatestBlogPosts(blocks.StructBlock):
-    static = blocks.StaticBlock(admin_text='Latest blog posts: no configuration needed.',)
-
-    def get_context(self, request, *args, **kwargs):
-        context = super(LatestBlogPosts, self).get_context(request, *args, **kwargs)
-        context['blog'] = BlogPage.objects.all().order_by('-first_published_at').live()[:3]
-        return context
-
-    class Meta:
-        icon = 'radio-full'
-        label = 'LatestBlogPosts'
-        template = 'streams/latest_posts.html'
 
 class TeamCards(blocks.StructBlock):
     title = blocks.CharBlock(required=False, max_length=50, help_text="Add your title")

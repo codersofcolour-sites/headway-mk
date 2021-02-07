@@ -61,13 +61,13 @@ class MenuItem(Orderable):
         return 'Missing Title'
 
 
-@register_snippet
+
 class Menu(ClusterableModel):
     """The main menu clusterable model."""
 
     title = models.CharField(max_length=100)
     slug = AutoSlugField(populate_from="title", editable=True)
-    # slug = models.SlugField()
+ 
 
     panels = [
         MultiFieldPanel([

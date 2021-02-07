@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'modelcluster',
 
     'widget_tweaks',
-
     'wagtail_color_panel',
     'taggit',
     'django.contrib.admin',
@@ -59,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "wagtail.contrib.routable_page",
     'wagtail.contrib.modeladmin', 
     'wagtail.contrib.settings',
 ]

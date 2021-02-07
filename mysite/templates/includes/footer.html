@@ -1,31 +1,23 @@
+{% load menus_tags wagtailimages_tags  %}
 {% with settings.settings.BaseSettings as setting %}
+{% get_menu "main-menu" as menu %} 
 <footer>
     <div class="footer-top-area blue-bg-1 pt-100 pb-70">
         <div class="container">
             <div class="row">
-                {% comment %} <div class="col-md-4 col-sm-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="footer-wrapper mb-30">
-                        <h2 class="footer-section">SUPPORT</h2>
+                        <h2 class="footer-section">Links</h2>
                         <ul class="footer-menu">
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Forums</a></li>
-                            <li><a href="#">Language Packs</a></li>
-                            <li><a href="#">Release Status</a></li>
+                            {% for item in menu.menu_items.all %}
+                            <li >
+                                <a href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
+                            </li>
+                            {% endfor %}                   
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3 hidden-sm">
-                    <div class="footer-wrapper mb-30">
-                        <h2 class="footer-section">link</h2>
-                        <ul class="footer-menu">
-                            <li><a href="#">Our Company</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Recent Work</a></li>
-                            <li><a href="#">Latest News</a></li>
-                        </ul>
-                    </div>
-                </div> {% endcomment %}
-                <div class="col-md-5 col-sm-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="footer-wrapper mb-30">
                         <h2 class="footer-section">address</h2>
                         <ul class="footer-link">
