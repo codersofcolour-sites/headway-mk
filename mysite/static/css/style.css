@@ -2682,11 +2682,12 @@ a.next-btn {
 .about-text ol {
   color: #000;
   font-size: 18px;
+  margin-bottom: 25px;
 }
 .about-text ul {
   color: #000;
   font-size: 18px;
-  margin: revert;
+  margin: 20px 0;
   padding: revert;
 }
 .about-text ol li {
