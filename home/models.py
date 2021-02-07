@@ -27,6 +27,8 @@ class HomePage(Page):
 
     content = StreamField(
         [   
+            ('latest_blog_post', blocks.LatestBlogPosts()),
+            ('image', blocks.ImageBlock()),
             ("jumbotron", blocks.ActionAreaBlock()),
             ("title_and_text", blocks.TitleAndTextBlock()),
             ("full_richtext", blocks.RichtextBlock()),

@@ -60,6 +60,6 @@ class FlexPage(Page):
         StreamFieldPanel("content"),
     ]
 
-    class Meta:  #noqa
+    class Meta: 
         verbose_name = "Flex Page"
         verbose_name_plural = "Flex Pages"

@@ -3,8 +3,7 @@
 from wagtail.core import blocks
 from wagtail.core.blocks.struct_block import StructBlock 
 from wagtail.images.blocks import ImageChooserBlock
-
-
+from blog.models import BlogPage
 
 class CarouselBlock(blocks.StreamBlock):
     carousel_item = blocks.StructBlock([
@@ -19,6 +18,14 @@ class CarouselBlock(blocks.StreamBlock):
         template = "streams/carousel_block.html"
         label = "Carousel Image"
 
+class ImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+
+    class Meta:
+        icon="image"
+        template = "streams/image_block.html"
+        label = "Image"
+
 class ActionAreaBlock(blocks.StructBlock):
     text = blocks.CharBlock(required = True, help_text ='Add your title')
     image = ImageChooserBlock(required=False)
@@ -30,6 +37,21 @@ class ActionAreaBlock(blocks.StructBlock):
         template = "streams/action_area_block.html"
         icon = "doc-full-inverse"
         label = "Jumbotron - Text & Button"
+
+class LatestBlogPosts(blocks.StructBlock):
+    static = blocks.StaticBlock(admin_text='Latest blog posts: no configuration needed.',)
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(LatestBlogPosts, self).get_context(request, *args, **kwargs)
+        context['blog'] = BlogPage.objects.all().order_by('-first_published_at').live()[:3]
+        return context
+
+    class Meta:
+        icon = 'radio-full'
+        label = 'LatestBlogPosts'
+        template = 'streams/latest_posts.html'
+
+
 
 class TitleAndTextBlock(blocks.StructBlock):
     """ Title and text and nothing else"""
@@ -77,14 +99,14 @@ class SimpleRichtextBlock(blocks.RichTextBlock):
 
     def __init__(
         self, required=True, help_text=None, editor="default", features=None, **kwargs
-    ):  # noqa
+    ): 
         super().__init__(**kwargs)
-        self.features = ["bold", "italic", "link"]
+        self.features = ["h1","h2","h4","bold", "italic", "link"]
 
-    class Meta:  # noqa
+    class Meta: 
         template = "streams/richtext_block.html"
         icon = "edit"
-        label = "Simple RichText"
+        label = "Content RichText"
     
 class CTABlock(blocks.StructBlock):
     """A simple call to action section."""
