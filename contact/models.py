@@ -11,7 +11,6 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 class FormField(AbstractFormField):
     page = ParentalKey('ContactPage', related_name='custom_form_fields')
 
-
 class ContactPage(AbstractEmailForm):
     thank_you_text = RichTextField(blank=True)
     short_message = models.CharField(blank=True, max_length=150, default='Have any inquiries, contact us!')
