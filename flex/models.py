@@ -10,9 +10,8 @@ from wagtail.admin.edit_handlers import (
     StreamFieldPanel,
     PageChooserPanel,
 )
-from wagtail.core.fields import StreamField, RichTextField
+from wagtail.core.fields import StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
-from modelcluster.fields import ParentalKey
 from streams import blocks 
 
 from wagtail_color_panel.fields import ColorField

@@ -1,9 +1,29 @@
 {% extends "base.html" %}
 
-{% load static wagtailcore_tags widget_tweaks %}
+{% load static wagtailcore_tags widget_tweaks wagtailimages_tags %}
 
 {% block content %}
 {% with settings.settings.BaseSettings as setting %}
+{% image page.banner_image fill-1920x320 as img%}
+<div class="breadcrumb-banner-area ptb-120 bg-opacity">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-text text-center">
+                <h2>{{page.title}}</h2>
+                    <ul class="breadcrumb-menu">
+                    {% for ancestor in page.get_ancestors %}
+                    {% if ancestor.url %}
+                        <li><a href="{{ancestor.url}}">{{ancestor.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                        <li><a href="{{page.url}}">{{page.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="contact-3-area contact-2 contact-3 pt-120 pb-50">
     <div class="container">
         <div class="row">
@@ -82,5 +102,19 @@
     </div>
 </div>
 {% endwith %}
+
+{% endblock %}
+
+
+{% block extra_css %}
+{% image page.banner_image fill-1920x320 as img%}
+<style>
+.breadcrumb-banner-area{
+    background-image:url({{img.url}})
+}
+.bg-opacity::before {
+    background: {% if page.banner_overlay %}{{page.banner_overlay}} {% else %} #003366{% endif %}  none repeat scroll 0 0;
+
+</style>
 
 {% endblock %}
