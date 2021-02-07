@@ -3,8 +3,8 @@
 <div class="team-area pt-110 pb-90">
     <div class="container">
         <div class="section-info text-center mb-65">
-            <h2>{{self.title}}</h2>
-            <p>{{self.subtitle}}</p>
+            {% if self.title %}<h2>{{self.title}}</h2>{% endif %}
+            {% if self.subtitle %}<p>{{self.subtitle}}</p>{% endif %}
         </div>
         <div class="row">
         {% for member in self.team %}
