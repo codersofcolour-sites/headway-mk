@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags widget_tweaks %}
+
+{% block content %}
+{% with settings.settings.BaseSettings as setting %}
+<div class="contact-3-area contact-2 contact-3 pt-120 pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="contact-wrapper-3 mb-30">
+                    <div class="contact-3-text">
+                        <h3>Leave Us a Message</h3>
+                    </div>
+                  
+                    </form>                   
+                    <form action="{% pageurl page %}" id="contact-form" method="POST">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.non_field_errors %}
+                            {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {% for field in form.visible_fields %}
+                        <div class="form-group">
+                            {% render_field field class+="form-control" placeholder=field.name %}
+                        </div>
+                        {% endfor %}
+     							
+                        <button type="submit">send message</button> 
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-3-right-wrapper mb-30">
+                    <div class="contact-3-right-info">
+                        <h3>Contact Us</h3>
+                        {% if page.short_message %}<p>{{self.short_message}}</p>{% endif %}
+                        
+                    </div>
+                    {% if setting.address %}
+                    <div class="contact-3-address">
+                        <div class="contact-3-icon">
+                            <i class="zmdi zmdi-pin"></i>
+                        </div>
+                        <div class="address-text">
+                            <span class="location">Location :</span>
+                            <span class="USA">{{setting.address}}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if setting.tel %}
+                    <div class="contact-3-address">
+                        <div class="contact-3-icon">
+                            <i class="zmdi zmdi-phone"></i>
+                        </div>
+                        <div class="address-text">
+                            <span class="location">phone :</span>
+                            <span class="USA">{{setting.tel}}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if setting.email %}
+                    <div class="contact-3-address">
+                        <div class="contact-3-icon">
+                            <i class="zmdi zmdi-email"></i>
+                        </div>
+                        <div class="address-text">
+                            <span class="location">mail :</span>
+                            <span class="USA">{{setting.email}}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endwith %}
+
+{% endblock %}

@@ -891,7 +891,7 @@
 .footer-wrapper {
 }
 .footer-section {
-  color: #fedc00;
+  color: #003366;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -1372,7 +1372,7 @@
 .address-text {
 }
 .address-text span {
-  display: block;
+  display: flex;
 }
 .location {
   color: #003366;
