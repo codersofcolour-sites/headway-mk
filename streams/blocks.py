@@ -101,7 +101,7 @@ class SimpleRichtextBlock(blocks.RichTextBlock):
         self, required=True, help_text=None, editor="default", features=None, **kwargs
     ): 
         super().__init__(**kwargs)
-        self.features = ["h1","h2","h4","bold", "italic", "link"]
+        self.features = ["h1","h2","h3","h4",'ol','ul',"bold", "italic", "link",'image',"embed"]
 
     class Meta: 
         template = "streams/richtext_block.html"
