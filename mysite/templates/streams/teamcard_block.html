@@ -1,0 +1,26 @@
+{% load wagtailimages_tags%}
+
+<div class="team-area pt-110 pb-90">
+    <div class="container">
+        <div class="section-info text-center mb-65">
+            <h2>{{self.title}}</h2>
+            <p>{{self.subtitle}}</p>
+        </div>
+        <div class="row">
+        {% for member in self.team %}
+            <div class="col-md-3 col-sm-6">
+                <div class="team-wrapper mb-30">
+                    <div class="team-img">
+                        {% image member.image fill-540x800 as img%}
+                        <img src="{{img.url}}" alt="{{img.alt}}" />
+                        <div class="team-text text-center">
+                            <h3>{{member.name}}</h3>
+                            <span>{{member.position}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>

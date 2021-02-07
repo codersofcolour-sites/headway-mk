@@ -39,6 +39,7 @@ class FlexPage(Page):
     
     content = StreamField(
         [ 
+            ('team', blocks.TeamCards()),
             ('image', blocks.ImageBlock()),
             ("jumbotron", blocks.ActionAreaBlock()),
             ("title_and_text", blocks.TitleAndTextBlock()),

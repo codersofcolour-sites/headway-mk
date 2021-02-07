@@ -57,7 +57,7 @@
                         <nav>
                             <ul>
                                {% for item in menu.menu_items.all %}
-                                <li {% if request.get_full_path == item.link%}class="active"{% endif %}>
+                                <li {% if item.link in request.get_full_path%}class="active"{% endif %}>
                                     <a href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
                                 </li>
                                 {% endfor %}

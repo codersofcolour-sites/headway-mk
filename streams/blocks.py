@@ -5,6 +5,7 @@ from wagtail.core.blocks.struct_block import StructBlock
 from wagtail.images.blocks import ImageChooserBlock
 from blog.models import BlogPage
 
+
 class CarouselBlock(blocks.StreamBlock):
     carousel_item = blocks.StructBlock([
                 ("image", ImageChooserBlock(required=True)),
@@ -51,6 +52,24 @@ class LatestBlogPosts(blocks.StructBlock):
         label = 'LatestBlogPosts'
         template = 'streams/latest_posts.html'
 
+class TeamCards(blocks.StructBlock):
+    title = blocks.CharBlock(required=False, max_length=50, help_text="Add your title")
+    subtitle = blocks.CharBlock(required=False, max_length=50, help_text="Add your subtitle")
+
+    team = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("image", ImageChooserBlock(required=True)),
+                ("name", blocks.CharBlock(required=True, max_length=40)),
+                ("position", blocks.CharBlock(required=True, max_length=40)),
+            ], icon='user'
+        )
+    )
+
+    class Meta:
+        template = "streams/teamcard_block.html"
+        icon = "user"
+        label = "Team Cards"
 
 
 class TitleAndTextBlock(blocks.StructBlock):

@@ -1061,7 +1061,7 @@
 }
 .team-img a {
 }
-.team-img a img {
+.team-img img {
   width: 100%;
 }
 .team-text {
@@ -1072,16 +1072,12 @@
   position: absolute;
   right: 0;
   transition: 0.3s;
-  opacity: 0;
-  transform: translateY(100%);
-}
-.team-wrapper:hover .team-text {
   opacity: 1;
-  transform: translateY(0px);
 }
+
 .team-text h3 {
   color: #ffffff;
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 600;
   margin-bottom: 3px;
   text-transform: capitalize;
@@ -1089,7 +1085,7 @@
 .team-text span {
   color: #ffffff;
   font-family: Montserrat;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
 }
 .team-icon {
