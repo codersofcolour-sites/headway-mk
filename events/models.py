@@ -39,12 +39,12 @@ class Event(AbstractEvent):
         StreamFieldPanel('body', heading='Extra Information')
     ]
 
-    parent_page_types = ['wagtail_events.EventIndex']
+    parent_page_types = ['events.EventIndex']
     subpage_types = []
 
 
 class EventIndex(AbstractEventIndex):
-    subpage_types = ['wagtail_events.Event']
+    subpage_types = ['events.Event']
 
     class Meta:
         verbose_name = 'Event index page'

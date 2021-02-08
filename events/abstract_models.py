@@ -194,7 +194,7 @@ class AbstractEvent(Page):
         ),
     ]
 
-    parent_page_types = ['wagtail_events.EventIndex']
+    parent_page_types = ['events.EventIndex']
     subpage_types = []
 
     class Meta(object):

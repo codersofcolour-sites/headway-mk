@@ -7,7 +7,7 @@ from wagtail_events.models import Event
 
 class EventsSummaryItem(SummaryItem):
     order = 300
-    template = 'wagtail_events/homepage/site_summary_events.html'
+    template = 'events/site_summary_events.html'
 
     def get_context(self):
         return {
@@ -36,6 +36,3 @@ class EventModelAdmin(ModelAdmin):
     content_panels = [
         FieldPanel('title'),
     ]
-
-
-modeladmin_register(EventModelAdmin)
