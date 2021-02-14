@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     'contact',
     'settings',
     'dashboard',
-    'wagtail_events',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
