@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'search',
     'blog',
     'flex',
-    'menus',
     'contact',
     'settings',
     'dashboard',
@@ -60,6 +59,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.routable_page",
     'wagtail.contrib.modeladmin', 
     'wagtail.contrib.settings',
+    'wagtailmenus',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +96,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
-                #'wagtailmenus.context_processors.wagtailmenus',
+                'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },
