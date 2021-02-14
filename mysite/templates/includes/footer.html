@@ -1,23 +1,25 @@
-{% load wagtailimages_tags  %}
+{% load menu_tags wagtailimages_tags  %}
 {% with settings.settings.BaseSettings as setting %}
 
 <footer>
     <div class="footer-top-area blue-bg-1 pt-100 pb-70">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-4">
                     <div class="footer-wrapper mb-30">
-                        <h2 class="footer-section">Links</h2>
                         <ul class="footer-menu">
-                            {% comment %} {% for item in menu.menu_items.all %}
-                            <li >
-                                <a href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
-                            </li>
-                            {% endfor %}                    {% endcomment %}
+                            {% flat_menu 'footer_menu1' max_levels=1  fall_back_to_default_site_menus=True %}
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-4">
+                    <div class="footer-wrapper mb-30">
+                        <ul class="footer-menu">
+                            {% flat_menu 'footer_menu2' max_levels=1  fall_back_to_default_site_menus=True %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
                     <div class="footer-wrapper mb-30">
                         <h2 class="footer-section">address</h2>
                         <ul class="footer-link">

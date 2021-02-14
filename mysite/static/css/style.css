@@ -345,11 +345,11 @@
 .slider-text {
 }
 .slider-text h2 {
-  color: #afdaff;
+  color: #337ab7;
   font-size: 52px;
   font-weight: 800;
   line-height: 70px;
-  text-shadow: -2px 2px #000;
+  text-shadow: -2px 2px #002244;
 }
 .slider-text span {
   color: #003366;
@@ -2717,4 +2717,12 @@ hr {
   padding: 0px;
   border-bottom: 1px solid #75a2cf;
   border-top: 0px;
+}
+
+.with_heading h4{
+  color: #003366;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
