@@ -6,10 +6,10 @@
             {% if self.subtitle %}<h4>{{ self.subtitle }}</h4>{% endif %}
             {% if self.title %}<h2>{{ self.title }}</h2>{% endif %}
         </div>
-        <div class="row">
+        <div class="row flex">
             {% for card in self.cards %}
             {% image card.image fill-400x400 as img %}
-            <div class="col-md-4 col-sm-6">
+            <div class="col-md-4 col-sm-6 d-flex align-items-stretch">
                 <div class="service-wrapper mb-30">
                     <div class="service-img">
                         <img src="{{ img.url }}" alt="{{ img.alt }}" />
@@ -29,3 +29,4 @@
         </div>
     </div>
 </div>
+
