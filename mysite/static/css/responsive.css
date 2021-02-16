@@ -3,13 +3,18 @@
 .home-area-right {
   padding: 112px 207px 24px 70px;
 }
-
+.grid_item{
+  flex-basis: 33.3333%;
+}
 }
 
 /* large desktop :1366px. */
 @media (min-width: 1200px) and (max-width: 1500px) {
 .slider-wrapper {
   padding: 200px 0;
+}
+.grid_item{
+  flex-basis: 33.3333%;
 }
 .home-area-right {
   padding: 112px 0 92px 20px;
@@ -38,6 +43,9 @@
   .site-branding::before {
     left: -699px;
   }
+.grid_item{
+  flex-basis: 33.3333%;
+}
 .home-area-right {
   padding: 112px 20px 17px;
 }
@@ -82,6 +90,9 @@
 .slider-text h2 {
   font-size: 44px;
   line-height: 51px;
+}
+.grid_item{
+  flex-basis: 50%;
 }
 .contact-left-wrapper {
   padding-left: 0;
@@ -178,6 +189,9 @@
 @media (max-width: 767px) {
 	.offer-wrapper {
   background: none!important;
+}
+.grid_item{
+  flex-basis: 100%;
 }
 .footer-icon {
   float: none;

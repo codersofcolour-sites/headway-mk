@@ -6,27 +6,26 @@
             {% if self.subtitle %}<h4>{{ self.subtitle }}</h4>{% endif %}
             {% if self.title %}<h2>{{ self.title }}</h2>{% endif %}
         </div>
-        <div class="row flex">
+        <div class="grid">
             {% for card in self.cards %}
             {% image card.image fill-400x400 as img %}
-            <div class="col-md-4 col-sm-6 d-flex align-items-stretch">
-                <div class="service-wrapper mb-30">
+            <div class="grid_item">
+                <div class="card service-wrapper mb-30">
                     <div class="service-img">
                         <img src="{{ img.url }}" alt="{{ img.alt }}" />
                     </div>
                     <div class="service-text text-center">
-                        <h2><a href="{% if card.button_page %}{{card.button_page}}{% elif card.button_url %}{{card.button_url}}{% endif %}">{{ card.title }}</a></h2>
+                        <h2><a href="{% if card.button_page %}{{card.button_page.url}}{% elif card.button_url %}{{card.button_url}}{% endif %}">{{ card.title }}</a></h2>
                         <p>{{ card.text }}</p>                        
                         {% if card.button_page %}
                             <a href="{{card.button_page.url}}">read more</a>
                         {% elif card.button_url %}
                             <a href="{{card.button_url}}">read more</a>        
                         {% endif %}
-                    </div>
+                    </div>       
                 </div>
-            </div>            
+            </div>           
             {% endfor %}         
         </div>
     </div>
 </div>
-
