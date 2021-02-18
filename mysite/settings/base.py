@@ -33,7 +33,9 @@ INSTALLED_APPS = [
     'contact',
     'settings',
     'dashboard',
-
+    'wagtail_simple_gallery',
+    'gallery',
+    
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -216,3 +218,6 @@ WAGTAILEMBEDS_FINDERS = [
         'class': 'wagtail.embeds.finders.oembed',
     }
 ]
+
+WAGTAILIMAGES_INDEX_PAGE_SIZE = 32
+

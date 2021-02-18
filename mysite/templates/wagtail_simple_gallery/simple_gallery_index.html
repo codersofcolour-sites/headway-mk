@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailsimplegallery_tags %}
+
+{% block title %}{{ page.seo_title }}{% endblock %}
+{% block metadesc %}{{ page.search_description }}{% endblock %}
+
+
+{% block content %}
+{% image page.banner_image fill-1920x320 as img%}
+<div class="breadcrumb-banner-area ptb-120 bg-opacity mb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-text text-center">
+                <h2>{{page.title}}</h2>
+                {% if page.intro_text %}{{ page.intro_text|richtext }}{% endif %}
+                <ul class="breadcrumb-menu">
+                {% for ancestor in page.get_ancestors %}
+                {% if ancestor.url %}
+                    <li><a href="{{ancestor.url}}">{{ancestor.title}}</a></li>
+                {% endif %}
+                {% endfor %}
+                    <li><a href="{{page.url}}">{{page.title}}</a></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <div class="container gallery-wrapper mb-30">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {% include 'wagtail_simple_gallery/simple_gallery.html' %}
+    
+    {% if gallery_images.has_next or gallery_images.has_previous %}
+    <div class="col-md-12 nav-flex">
+        <nav aria-label="Page navigation">
+        <ul class="pagination pagination-lg">
+            {% if gallery_images.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ gallery_images.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>            
+            {% endif %}
+          {% for page in gallery_images.paginator.page_range %}
+            <li class="gallery-pagination-item {% if gallery_images.number == page  %}active{% endif %}">
+              <a class="{% if gallery_images.number == page  %}active{% endif %}" href="?page={{page }}">{{ page }}</a>
+            </li>
+          {% endfor %}            
+          {% if gallery_images.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ gallery_images.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" >
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+          {% endif %}      
+        </ul>
+        </nav>
+    </div>   
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block extra_js %}{% endblock %}

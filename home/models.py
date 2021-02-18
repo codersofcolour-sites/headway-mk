@@ -17,7 +17,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from streams import blocks
 
-
     
 class HomePage(Page):
    
@@ -49,28 +48,3 @@ class HomePage(Page):
         verbose_name = "Home Page"
         verbose_name_plural = "Home Pages"
 
-    # class ColumnBlock(blocks.StreamBlock):
-    #     heading = blocks.CharBlock(classname="full title")
-    #     paragraph = blocks.RichTextBlock()
-    #     image = ImageChooserBlock()
-
-    # class Meta:
-    #     template = 'blog/blocks/column.html'
-
-
-    # class TwoColumnBlock(blocks.StructBlock):
-
-    #     left_column = ColumnBlock(icon='arrow-right', label='Left column content')
-    # right_column = ColumnBlock(icon='arrow-right', label='Right column content')
-
-    # class Meta:
-    #     template = 'blog/blocks/two_column_block.html'
-    #     icon = 'placeholder'
-    #     label = 'Two Columns'
-    # class AlignedParagraphBlock(blocks.StructBlock):
-    #     alignment = blocks.ChoiceBlock([('left', 'Left'), ('center', 'Center'), ('right', 'Right')])
-    #     paragraph = blocks.RichTextBlock()
-
-    # class Meta:
-    #     template = 'blocks/aligned_paragraph.html'
-    

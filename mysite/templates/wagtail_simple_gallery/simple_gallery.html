@@ -1,0 +1,41 @@
+{% load static wagtailimages_tags wagtailsimplegallery_tags %}
+
+  <link rel="stylesheet" href="{% static 'css/baguetteBox.min.css' %}"/>
+  <div class="row gallery-container">
+  {% for img in gallery_images %}
+    {% image img fill-240x180 as img_thumb %}
+    <div class="gallery-thumbnail-container col-xs-12 col-sm-4 col-md-3 col-lg-3">
+      <a href="{{ img|original_url }}" title="{{ img_thumb.alt|hide_num_order }}">
+        <img src="{{ img_thumb.url }}" alt="{{ img_thumb.alt }}" class="gallery-thumbnail">
+      </a>
+      <link rel="preload" href="{{ img|original_url }}">
+    </div>
+  {% endfor %}
+  </div>
+
+
+  {% if page.use_lightbox or use_lightbox %}
+  <script src="{% static 'js/baguetteBox.min.js' %}"></script>
+  <script type="text/javascript">
+    baguetteBox.run('.gallery-container');
+  </script>
+  {% endif %}
+
+{% block extra_css %}
+<style>
+.gallery-thumbnail-container img {
+    margin-bottom: 20px;
+    box-shadow: 0 0 4px -1px #000;
+}
+.breadcrumb-banner-area{
+    background-image:url({{img.url}});
+}
+.bg-opacity::before {
+    background: {% if page.banner_overlay %}{{page.banner_overlay}} {% else %} #003366{% endif %}  none repeat scroll 0 0;
+}
+.gallery-thumbnail-container img {
+    width:100% !important;
+}
+</style>
+
+{% endblock %}

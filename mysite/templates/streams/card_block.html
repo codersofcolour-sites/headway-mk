@@ -14,13 +14,13 @@
                     <div class="service-img">
                         <img src="{{ img.url }}" alt="{{ img.alt }}" />
                     </div>
-                    <div class="service-text text-center">
+                    <div class="service-text">
                         <h2><a href="{% if card.button_page %}{{card.button_page.url}}{% elif card.button_url %}{{card.button_url}}{% endif %}">{{ card.title }}</a></h2>
                         <p>{{ card.text }}</p>                        
                         {% if card.button_page %}
-                            <a href="{{card.button_page.url}}">read more</a>
+                            <a href="{{card.button_page.url}}">view more</a>
                         {% elif card.button_url %}
-                            <a href="{{card.button_url}}">read more</a>        
+                            <a href="{{card.button_url}}">view more</a>        
                         {% endif %}
                     </div>       
                 </div>

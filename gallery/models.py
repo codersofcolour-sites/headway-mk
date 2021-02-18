@@ -1,28 +1,28 @@
-"""Flex page."""
-
-
 from django.db import models
-from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    MultiFieldPanel,
-    InlinePanel,
-    StreamFieldPanel,
-    PageChooserPanel,
-)
+
 from wagtail.core.fields import StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
-from streams import blocks 
+
+from wagtail.admin.edit_handlers import (
+    MultiFieldPanel,
+    StreamFieldPanel,
+)
+from wagtail.core.models import Page
+from wagtail.core.fields import StreamField
+from wagtail.images.edit_handlers import ImageChooserPanel
+
+from streams import blocks
 
 from wagtail_color_panel.fields import ColorField
 from wagtail_color_panel.edit_handlers import NativeColorPanel
 
+from wagtail_simple_gallery.models import SimpleGalleryIndex
 
-class FlexPage(Page):
-    """Flexible Page Class"""
+class GalleryPage(Page):
+    template = "gallery/gallery_page.html"
+    subpage_types = ["wagtail_simple_gallery.SimpleGalleryIndex"]
+    max_count = 1  
 
-    template = "flex/flexpage.html"
-    
     banner_overlay = ColorField(
         blank=True, 
         verbose_name='Banner Overlay Color',
@@ -39,11 +39,6 @@ class FlexPage(Page):
     
     content = StreamField(
         [ 
-            ('team', blocks.TeamCards()),
-            ('image', blocks.ImageBlock()),
-            ("jumbotron", blocks.ActionAreaBlock()),
-            ("title_and_text", blocks.TitleAndTextBlock()),
-            ("simple_richtext", blocks.SimpleRichtextBlock()),
             ("cards", blocks.CardBlock()),
         ],
         null = True, 
@@ -61,6 +56,7 @@ class FlexPage(Page):
         StreamFieldPanel("content"),
     ]
 
-    class Meta: 
-        verbose_name = "Flex Page"
-        verbose_name_plural = "Flex Pages"
+SimpleGalleryIndex.parent_page_types = ["gallery.GalleryPage"]
+SimpleGalleryIndex.subpage_types = []
+# New default number of images displayed in gallery 
+SimpleGalleryIndex._meta.get_field('images_per_page').default=32
