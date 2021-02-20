@@ -2867,3 +2867,17 @@ hr {
 .joy-ev-item span{
   color: #db218b;
 }
+
+.blog-meta-tags{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.blog-meta-tags h2{
+  color: #003366;
+}
+
+
+.blog-meta-tags h2 span{
+  color: #db218b;
+}

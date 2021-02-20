@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+<div class="breadcrumb-banner-area ptb-120 bg-opacity-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-text text-center">
+                <h2>{{page.title}}</h2>
+                    <ul class="breadcrumb-menu">
+                    {% for ancestor in page.get_ancestors %}
+                    {% if ancestor.url %}
+                        <li><a href="{{ancestor.url}}">{{ancestor.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                        <li><a href="{{page.url}}">{{page.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if blogs %}
+<div class="blog-meta-tags">
+        {% if category %}
+        <h2>Category: <span>{{ category }}</span></h2>
+        {% endif %}
+        {% if tag %}
+        <h2>Posts tagged with: <span>'{{ tag }}'</span> </h2>
+        {% endif %}
+</div>
+
+<div class="blog-area pt-90 pb-90 mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-30">     
+                {% for blog in blogs %}
+                    {% include 'blog/blog_post.html' with include_context="index_page" %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>        
+    {% if blog.previous_page_number or blog.next_page_number %}
+    <div class="col-md-12 nav-flex">
+        <nav aria-label="Page navigation">
+        <ul class="pagination pagination-lg">
+            {% if blog.next_page_number %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ blog.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>            
+            {% endif %}
+            {% for page in blog.paginator.page_range %}
+            <li class="page-item {% if blog.number == page  %}active{% endif %}">
+                <a class="{% if blog.number == page  %}active{% endif %}" href="?page={{page }}">{{ page }}</a>
+            </li>
+            {% endfor %}            
+            {% if blog.previous_page_number %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ blog.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" >
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+            {% endif %}      
+        </ul>
+        </nav>
+    </div>   
+    {% endif %}
+</div> 
+
+
+{% else %}
+<h2>There are currently no blog posts</h2>
+{% endif %}        
+
+{% endblock %}

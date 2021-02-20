@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+{% block content %}
+<div class="blog-area pt-90 pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-30">
+                <article class="blog-post mb-40">
+                    <div class="blog-thumb">
+                        {% image page.header_image fill-770x432 as img %}
+                        <a href="{% pageurl page %}"><img src="{{img.url}}" alt="{{img.alt}}" /></a>
+                    </div>
+                    <div class="blog-content">
+                        <h2 class="post-title">{{page.title}}</h2>
+                        <div class="blog-meta"> 
+                            <span>{{ page.date|date:"F jS, Y" }}</span>
+                            {% if page.categories.all %}
+                            <span> Category: 
+                                    {% for cat in page.categories.all %}
+                                        <a href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
+                                    {% endfor %} 
+                            </span>
+                            {% endif %}   
+                        </div>
+                        {{page.body|richtext}}
+                        <div class="next-prev">
+                            <a class="prev-btn" href="{{page.get_parent.url}}"><i class="fa fa-angle-left"></i> Back</a>
+                        </div>
+                        <div class="tags">
+                            {% if page.tags.all %}
+                                Tags: 
+                                    {% for tag in page.tags.all %}
+                                        <a href="{% url 'blog:tag' tag.slug %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                            {% endif %}
+                        </div> 
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
