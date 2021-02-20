@@ -1,0 +1,13 @@
+{% load wagtailcore_tags joyous_tags %}{% if event.location %}
+  <span>Location:</span>
+  <div class="joy-ev-where joy-field">
+    {{ event.location }}
+    {% location_gmap event.location %}
+  </div>
+{% endif %}{% if event.website %}
+<span>Website:</span>
+  <div class="joy-ev-website joy-field">
+    <a class="joy-ev-website__link"
+       href="{{ event.website }}" target="_blank">{{ event.website }}</a>
+  </div>
+{% endif %}

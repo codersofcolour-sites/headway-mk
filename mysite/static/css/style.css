@@ -2784,3 +2784,86 @@ hr {
   margin-bottom: 20px;
   text-transform: uppercase;
 }
+
+.joy-ev-status{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.joy-ev-status span{
+  background-color: #db218b;
+  color: #fff;
+  padding: 10px;
+}
+
+.joy-cal__day--today {
+  background-color: #75a2cf !important;
+}
+
+.joy-cal__day--today .joy-days-events .joy-days-events__event-time {
+  color: #fdff2d!important;
+}
+
+.joy-cal__day--today .joy-days-events .joy-days-events__event-title {
+  color: #fdff2d;
+}
+
+.joy-cal__day--today .joy-cal__date{
+  color: #fff;
+}
+
+
+
+.joy-days-events__event-time {
+  color: #db218b !important;
+}
+
+.joy-days-events__event-title {
+  display: block !important;
+  margin-bottom: 5px !important;
+}
+
+.joy-days-events {
+  min-height: 95px!important;
+}
+
+.joy-cal__headings {
+  height: 37px;
+  text-align-last: center;
+  color: #fff;
+  background-color: #003366;
+}
+
+.joy-cal__period-ctrl{
+  color: #fff;  
+}
+
+.joy-cal__weekday {
+  border: 1px solid #aaa;
+  padding: 9px;
+  border-bottom: 5px solid #003366!important;
+  color: #003366;
+}
+
+.joy-info span{
+  color: #db218b;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 10px;
+}
+.joy-info .joy-field{
+  font-size: 23px;
+  line-height: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #036;
+}
+
+.joy-img img{
+  width: 65%;
+  height: auto;
+}
+
+.joy-ev-item span{
+  color: #db218b;
+}

@@ -1,0 +1,45 @@
+{% extends "joyous/joyous_base.html" %}
+{% load static wagtailcore_tags i18n %}
+
+{% block content %}
+<div class="breadcrumb-banner-area ptb-120 bg-opacity-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-text text-center">
+                <h2>{{page.title}}</h2>
+                    <ul class="breadcrumb-menu">
+                    {% for ancestor in page.get_ancestors %}
+                    {% if ancestor.url %}
+                        <li><a href="{{ancestor.url}}">{{ancestor.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                        <li><a href="{{page.url}}">{{page.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container content joy-content mb-30">
+
+  {% block cal_all %}
+  {% block cal_intro %}
+    <div class="about-wrapper mb-30">
+        <div class="about-text">
+        {{ page.intro|richtext }}
+        </div>
+    </div>
+
+  {% endblock cal_intro %}
+  {% block view_choices %}
+  {% endblock view_choices %}
+  {% block cal_subtitle %}
+  {% endblock cal_subtitle %}
+  {% block cal_events %}
+  <div data-version="{{ version }}"></div>
+  {% endblock cal_events %}
+  {% block cal_footer %}{% endblock cal_footer %}
+  {% endblock cal_all %}
+</div>
+{% endblock %}

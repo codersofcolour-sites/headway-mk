@@ -471,7 +471,7 @@ select,
 }
 .bg-opacity-2{position:relative;}
 .bg-opacity-2::before {
-  background: #000000 none repeat scroll 0 0;
+  background: #002142 none repeat scroll 0 0;
   content: "";
   height: 100%;
   left: 0;
@@ -482,7 +482,7 @@ select,
 }
 .bg-opacity-3{position:relative;}
 .bg-opacity-3::before {
-  background: #db218b;
+  background: #db218b none repeat scroll 0 0;
   content: "";
   height: 100%;
   left: 0;
@@ -493,7 +493,7 @@ select,
 }
 .bg-opacity-4{position:relative;}
 .bg-opacity-4::before {
-  background: #003366;
+  background: #003366 none repeat scroll 0 0;
   content: "";
   height: 100%;
   left: 0;

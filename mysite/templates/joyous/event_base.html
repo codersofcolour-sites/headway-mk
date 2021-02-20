@@ -1,0 +1,92 @@
+{% extends "joyous/joyous_base.html" %}
+{% load wagtailcore_tags wagtailimages_tags i18n %}
+
+{% block content %}
+
+<div class="breadcrumb-banner-area ptb-120 bg-opacity-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-text text-center">
+                <h2>{{page.title}}</h2>
+                    <ul class="breadcrumb-menu">
+                    {% for ancestor in page.get_ancestors %}
+                    {% if ancestor.url %}
+                        <li><a href="{{ancestor.url}}">{{ancestor.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                        <li><a href="{{page.url}}">{{page.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="about-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="about-wrapper">
+                    <div class="about-text">
+                    {% block event_status %}
+                        {% if page.status %}
+                        <div class="joy-ev-status">
+                            <span>{{ page.status_text }}</span>
+                        </div>
+                        {% endif %}
+                    {% endblock event_status %}
+                    {% block event_title %}{% endblock event_title %}
+                    {% block event_image %}
+                        {% if page.image %}
+                        <div class="joy-img mb-30">
+                            {% image page.image original class="joy-img__img full-width" %}
+                        </div>
+                        {% endif %}
+                    {% endblock event_image %}
+                    <div class="joy-info mb-30">
+                        {% block event_who %}
+                        {% include "joyous/includes/who.html" with event=page %}
+                        {% endblock event_who %}
+
+                        {% block event_when %}
+                        {% include "joyous/includes/when.html" with event=page %}
+                        {% endblock event_when %}
+
+                        {% block event_where %}
+                        {% include "joyous/includes/where.html" with event=page %}
+                        {% endblock event_where %}
+
+                        {% block event_details %}                 
+                    </div>
+                    <div class="joy-ev-details joy-field">
+                        {{ page.details|richtext }}
+                    </div>
+                    {% endblock event_details %}
+                    {% block event_footer %}{% endblock event_footer %}                    
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content joy-content">
+
+  
+
+</div>
+{% endblock content %}
+
+{% block extra_css %}
+{% image page.image original as img%}
+<style>
+.breadcrumb-banner-area{
+    background-image:url({{img.url}});
+    background-size: cover;
+}
+.bg-opacity::before {
+    background:  none repeat scroll 0 0;
+}
+</style>
+
+{% endblock %}
