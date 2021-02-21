@@ -37,13 +37,6 @@ class GalleryPage(Page):
         related_name = "+",
     )
     
-    content = StreamField(
-        [ 
-            ("cards", blocks.CardBlock()),
-        ],
-        null = True, 
-        blank =True,    
-    )
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -52,8 +45,7 @@ class GalleryPage(Page):
                 ImageChooserPanel("banner_image"),
             ],
             heading="Banner Options",
-        ),
-        StreamFieldPanel("content"),
+        )
     ]
 
 SimpleGalleryIndex.parent_page_types = ["gallery.GalleryPage"]

@@ -23,10 +23,28 @@
         </div>
     </div>
 </div>
-    
-    {% for block in page.content %}
-        {% include_block block %}
-    {% endfor %}
+<div class="our-service-area pt-120 pb-90">
+    <div class="container">
+        <div class="grid">
+            {% for card in page.get_children.all %}
+            {% image card.specific.images.0 fill-400x400 as img %}
+            <div class="grid_item">
+                <div class="card service-wrapper mb-30">
+                    <div class="service-img">
+                        <img src="{{ img.url }}" alt="{{ img.alt }}" />
+                    </div>
+                    <div class="service-text">
+                        <h2><a href="{{card.specific.url}}">{{ card.specific.title }}</a></h2>
+                        <p>{{ card.specific.intro_text|richtext }}</p>                        
+                        <a href="{{card.specific.url}}">view more</a>        
+                    </div>       
+                </div>
+            </div>           
+            {% endfor %}               
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block extra_css %}

@@ -17,6 +17,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from streams import blocks
 
+from wagtail_simple_gallery.models import  SimpleGalleryIndex
     
 class HomePage(Page):
    
