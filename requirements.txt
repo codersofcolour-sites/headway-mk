@@ -42,7 +42,7 @@ jmespath==0.10.0
 korean-lunar-calendar==0.2.1
 l18n==2018.5
 ls.joyous==1.4.0
-lxml==4.6.2
+lxml==4.6.3
 num2words==0.5.10
 parso==0.7.0
 pexpect==4.8.0
